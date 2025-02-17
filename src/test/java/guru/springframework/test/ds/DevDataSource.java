@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by igorg on 17.02.2025
  */
 @Component
-@Profile("dev")
+@Profile({"dev", "default"})
 public class DevDataSource implements FakeDataSource {
     @Override
     public String getConnectionInfo() {
