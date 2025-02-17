@@ -2,21 +2,18 @@ package guru.springframework.bootstrap.profilesysout;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by igorg on 17.02.2025
  */
 @Component
-@Profile("qa")
-public class QAProfileSysOut {
-
+public class NonProfileBean {
     @Autowired
-    public QAProfileSysOut(@Value("${guru.springframework.profile.message}") String msg) {
+    public NonProfileBean(@Value("${guru.springframework.profile.message}") String msg) {
         System.out.println("##################################");
         System.out.println("##################################");
-        System.out.println("##               QA             ##");
+        System.out.println("##         NonProfileBean       ##");
         System.out.println(msg);
         System.out.println("##################################");
         System.out.println("##################################");
