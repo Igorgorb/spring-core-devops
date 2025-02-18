@@ -1,0 +1,45 @@
+mysql> show database;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| springguru         |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database mydatabase;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use mydatabase;
+Database changed
+
+mysql> CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select user,host from mysql.user;
++---------------+-----------+
+| user          | host      |
++---------------+-----------+
+| newuser       | %         |
+| healthchecker | localhost |
+| mysql.session | localhost |
+| mysql.sys     | localhost |
+| root          | localhost |
++---------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
