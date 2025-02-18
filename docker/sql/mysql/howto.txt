@@ -20,7 +20,7 @@ Database changed
 mysql> CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';
 Query OK, 0 rows affected (0.01 sec)
 
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%' with grant option;
 Query OK, 0 rows affected (0.00 sec)
 
 mysql> FLUSH PRIVILEGES;
@@ -38,8 +38,14 @@ mysql> select user,host from mysql.user;
 +---------------+-----------+
 5 rows in set (0.00 sec)
 
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' with grant option;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 
+mysql> GRANT create user ON *.* TO 'newuser'@'%';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT ALL PRIVILEGES ON mydatabase.* TO 'newuser'@'%' with grant option;
+Query OK, 0 rows affected (0.01 sec)
+
 mysql> FLUSH PRIVILEGES;
-Query OK, 0 rows affected (0.00 sec)
+Query OK, 0 rows affected (0.02 sec)
